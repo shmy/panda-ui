@@ -18,7 +18,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'npm test:coverage'
+        sh 'npm run test:coverage'
       }
     }
 
