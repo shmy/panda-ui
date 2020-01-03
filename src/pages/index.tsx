@@ -15,7 +15,7 @@ class index extends PureComponent<Props, State> {
 
   render () {
     return (
-      <h3 style={{ textAlign: 'center' }}>hello world</h3>
+      <h3 style={{ textAlign: 'center' }}>hello world!</h3>
     )
   }
 }
