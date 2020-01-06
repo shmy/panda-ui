@@ -1,16 +1,19 @@
 pipeline {
-  agent { docker 'node:12.14.0' }
-
+  agent any
+  def node_home
   stages {
+    stage('Preparation') {
+         node_home = tool 'node12'
+     }
     stage('Build') {
       environment {
         CI = 'true'
       }
       steps {
-        sh 'node -v'
-        sh 'npm -v'
-        sh 'npm config set registry https://registry.npm.taobao.org'
-        sh 'npm config get registry'
+        sh '${node_home}/bin/node -v'
+        sh '${node_home}/bin/npm -v'
+        sh '${node_home}/bin/npm config set registry https://registry.npm.taobao.org'
+        sh '${node_home}/bin/npm config get registry'
 
       }
     }
