@@ -1,10 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import App from '../index'
+import Index from '../index'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />)
-  const linkElement = getByText(/hello/i)
-  // @ts-ignore
-  expect(linkElement).toBeInTheDocument()
+test('renders without casing', () => {
+  render(<Index />)
 })
