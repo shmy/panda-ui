@@ -20,6 +20,11 @@ pipeline {
     }
 
     stage('Deploy') {
+      agent {
+        docker {
+          image 'docker:dind'
+        }
+      }
       steps {
         script {
           docker.build('panda-ui')
