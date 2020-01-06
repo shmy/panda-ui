@@ -1,19 +1,16 @@
 pipeline {
   agent any
-  def node_home
+  tool { nodejs: 'node12'}
   stages {
-    stage('Preparation') {
-         node_home = tool 'node12'
-     }
     stage('Build') {
       environment {
         CI = 'true'
       }
       steps {
-        sh '${node_home}/bin/node -v'
-        sh '${node_home}/bin/npm -v'
-        sh '${node_home}/bin/npm config set registry https://registry.npm.taobao.org'
-        sh '${node_home}/bin/npm config get registry'
+        sh '/bin/node -v'
+        sh '/bin/npm -v'
+        sh '/bin/npm config set registry https://registry.npm.taobao.org'
+        sh '/bin/npm config get registry'
 
       }
     }
