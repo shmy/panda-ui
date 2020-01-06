@@ -1,6 +1,5 @@
-pipeline {
-  agent any
-  stages {
+#!groovy
+  node {
     stage('Build') {
       environment {
         CI = 'true'
@@ -11,9 +10,6 @@ pipeline {
     }
 
     stage('Deploy') {
-      steps {
-          sh 'docker --version'
-        }
+       sh 'docker --version'
     }
-  }
 }
