@@ -1,9 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:12.14-alpine3.9'
-    }
-  }
+  agent none
 
   stages {
     stage('Build') {
@@ -11,8 +7,6 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'sudo apk add --no-cache curl'
-        sh 'curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.04.0-ce.tgz && tar xzvf docker-17.04.0-ce.tgz && mv docker/docker /usr/local/bin && rm -r docker docker-17.04.0-ce.tgz'
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
         sh 'npm install'
