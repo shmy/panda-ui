@@ -8,7 +8,8 @@ pipeline {
       steps {
         sh 'wget https://nodejs.org/dist/v12.14.0/node-v12.14.0-linux-x64.tar.xz'
         sh 'tar -xf node-v12.14.0-linux-x64.tar.xz'
-        sh 'ls -a'
+        sh 'ls -a ./node-v12.14.0-linux-x64/'
+        sh 'ls -a ./node-v12.14.0-linux-x64/bin'
         sh 'chmod +x ./node-v12.14.0-linux-x64/bin/node'
         sh 'chmod +x ./node-v12.14.0-linux-x64/bin/npm'
 
