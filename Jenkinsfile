@@ -1,5 +1,5 @@
 pipeline {
-  agent { docker { node '12.14.0'} }
+  agent { docker { image 'node:12.14.0-alpine'} }
   stages {
     stage('Build') {
       environment {
