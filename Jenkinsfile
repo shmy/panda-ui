@@ -7,7 +7,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-      nodejs(nodeJSInstallationName: 'node12', configId: '') {
+      nodejs(nodeJSInstallationName: 'node12') {
         sh 'node -v'
         sh 'npm config ls'
         sh 'npm config set registry https://registry.npm.taobao.org'
