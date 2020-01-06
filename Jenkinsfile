@@ -1,13 +1,12 @@
 pipeline {
   agent any
-  tools {nodejs "nodejs"}
-
   stages {
     stage('Build') {
       environment {
         CI = 'true'
       }
       steps {
+        sh 'apk add nodejs'
         sh 'npm config ls'
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
