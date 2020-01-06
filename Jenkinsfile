@@ -8,6 +8,7 @@ pipeline {
         CI = 'true'
       }
       steps {
+        sh 'node -v'
         sh 'npm config ls'
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
