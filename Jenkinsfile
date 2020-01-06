@@ -6,7 +6,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'pwd'
+        sh 'apk add nodejs'
         sh 'wget http://www.baidu.com'
         sh '/bin/node -v'
         sh '/bin/npm -v'
