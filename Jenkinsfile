@@ -1,5 +1,9 @@
 pipeline {
-  agent any
+    agent {
+        docker {
+            image 'node:12.14.0-alpine'
+        }
+    }
 
   stages {
     stage('Build') {
@@ -7,7 +11,6 @@ pipeline {
         CI = 'true'
       }
       steps {
-      nodejs(nodeJSInstallationName: 'node12') {
         sh 'node -v'
         sh 'npm config ls'
         sh 'npm config set registry https://registry.npm.taobao.org'
@@ -15,17 +18,12 @@ pipeline {
         sh 'npm install'
         sh 'npm run test:coverage'
         sh 'npm run build'
-}
       }
     }
 
     stage('Deploy') {
       steps {
-        script {
-          docker.build('panda-ui')
-          docker.withRegistry('https://955095959256.dkr.ecr.cn-northwest-1.amazonaws.com.cn', 'ecr:cn-northwest-1:panda-ecr') {
-            docker.image('panda-ui').push('latest')
-          }
+          sh 'docker --version'
         }
       }
     }
