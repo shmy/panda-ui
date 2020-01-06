@@ -1,6 +1,6 @@
 import React from 'react'
 import Index from './pages/index'
-import { baseUrl } from './utils/request'
+import { baseUrl } from './utils/constant'
 import './App.css'
 
 const App: React.FC = () => {
