@@ -6,15 +6,10 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'wget https://nodejs.org/dist/v12.14.0/node-v12.14.0-linux-x64.tar.xz'
-        sh 'tar -xf node-v12.14.0-linux-x64.tar.xz'
-        sh 'ls -a ./node-v12.14.0-linux-x64/'
-        sh 'ls -a ./node-v12.14.0-linux-x64/bin'
-        sh 'chmod +x ./node-v12.14.0-linux-x64/bin/node'
-        sh 'chmod +x ./node-v12.14.0-linux-x64/bin/npm'
-
-        sh '/var/jenkins_home/jobs/panda-ui/branches/master/workspace/node-v12.14.0-linux-x64/bin/node -v'
-        sh '/var/jenkins_home/jobs/panda-ui/branches/master/workspace/node-v12.14.0-linux-x64/bin/npm -v'
+        sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash'
+        sh 'source ~/.nvm/nvm.sh'
+        sh 'nvm install node '
+        sh 'node -v'
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
 
