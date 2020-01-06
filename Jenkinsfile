@@ -11,10 +11,12 @@ pipeline {
         sh 'ls -a'
         sh 'chmod +x ./node-v12.14.0-linux-x64/bin/node'
         sh 'chmod +x ./node-v12.14.0-linux-x64/bin/npm'
-        sh './node-v12.14.0-linux-x64/bin/npm -v'
-        sh '/bin/npm -v'
-        sh '/bin/npm config set registry https://registry.npm.taobao.org'
-        sh '/bin/npm config get registry'
+        sh 'export PATH=$PATH:$PWD/node-v12.14.0-linux-x64/bin/node'
+        sh 'export PATH=$PATH:$PWD/node-v12.14.0-linux-x64/bin/npm'
+        sh 'node -v'
+        sh 'npm -v'
+        sh 'npm config set registry https://registry.npm.taobao.org'
+        sh 'npm config get registry'
 
       }
     }
