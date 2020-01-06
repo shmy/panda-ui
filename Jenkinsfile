@@ -1,24 +1,18 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:12.14-alpine3.9'
-      args '-v /var/run/docker.sock:/var/run/docker.sock'
-    }
-
-  }
+  agent any
   stages {
-    stage('Test') {
+    stage('Build') {
+      agent {
+          docker {
+            image 'node:12.14-alpine3.9'
+          }
+        }
       environment {
         CI = 'true'
       }
       steps {
         sh 'npm install'
         sh 'npm run test:coverage'
-      }
-    }
-
-    stage('Build') {
-      steps {
         sh 'npm run build'
       }
     }
