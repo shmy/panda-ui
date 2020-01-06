@@ -1,6 +1,6 @@
 pipeline {
   agent any
-  tools {nodejs "node"}
+  tools {nodejs "nodejs"}
 
   stages {
     stage('Build') {
@@ -8,7 +8,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-                          sh 'npm config ls'
+        sh 'npm config ls'
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
         sh 'npm install'
