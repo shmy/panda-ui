@@ -13,7 +13,8 @@ pipeline {
 
     stage('Deploy') {
       steps {
-          sh 'docker --version'
+          sh 'chmod +x ./docker.sh'
+          sh './docker.sh'
         }
     }
   }
