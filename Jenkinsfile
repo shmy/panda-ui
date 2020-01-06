@@ -6,7 +6,7 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash'
+        sh 'curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash'
         sh 'source ~/.nvm/nvm.sh'
         sh 'nvm install node '
         sh 'node -v'
