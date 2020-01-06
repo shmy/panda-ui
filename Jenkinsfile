@@ -1,20 +1,18 @@
 pipeline {
-  agent { docker { image 'node:12.14.0-alpine'} }
+  agent any
   stages {
     stage('Build') {
       environment {
         CI = 'true'
       }
-      steps {
+      docker.image('node:alpine').inside {
         sh 'node -v'
-
       }
     }
 
     stage('Deploy') {
       steps {
-          sh 'chmod +x ./docker.sh'
-          sh './docker.sh'
+          sh 'docker --version'
         }
     }
   }
