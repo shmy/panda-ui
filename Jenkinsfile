@@ -6,7 +6,6 @@ pipeline {
         CI = 'true'
       }
       steps {
-        sh 'apk add nodejs'
         sh 'wget https://nodejs.org/dist/v12.14.0/node-v12.14.0-linux-x64.tar.xz'
         sh 'tar -xf node-v12.14.0-linux-x64.tar.xz'
         sh 'chmod +x ./node-v12.14.0-linux-x64.tar.xz/bin/node'
