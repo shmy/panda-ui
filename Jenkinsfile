@@ -1,16 +1,12 @@
 pipeline {
-  agent any
+  agent { node: '12.14.0'}
   stages {
     stage('Build') {
       environment {
         CI = 'true'
       }
       steps {
-        sh 'wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash'
-        sh 'source ~/.nvm/nvm.sh'
-        sh 'nvm install node'
         sh 'node -v'
-        sh 'npm config get registry'
 
       }
     }
