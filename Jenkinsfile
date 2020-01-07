@@ -8,6 +8,7 @@ node {
       environment {
         CI = 'true'
       }
+      }
 
     stage('Sonar') {
       sh 'cd sonar'
