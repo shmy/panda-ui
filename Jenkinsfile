@@ -5,10 +5,10 @@ node {
     }
 
     stage('Sonar') {
-      sh 'cd sonar'
-      sh 'ls -a'
-      sh 'docker build -t sonar .'
-      sh 'cd ../'
+        dir('sonar') {
+            sh 'ls -a'
+            sh 'docker build -t sonar .'
+        }
       sh 'ls -a'
       docker.image('sonar').inside() {
         sh 'sonar-scanner'
