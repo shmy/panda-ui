@@ -6,11 +6,9 @@ node {
 
 
     stage('Sonar') {
-      def sonarqubeScannerHome = tool name: 'sonar-scanner'
+      def sonarqubeScannerHome = tool name: 'SonarQube Scanner'
 
-      withSonarQubeEnv('SonarQube') {
           sh "${sonarqubeScannerHome}/bin/sonar-scanner"
-      }
     }
     stage('Deploy') {
         docker.build('panda-ui')
