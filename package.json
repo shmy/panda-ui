@@ -22,6 +22,7 @@
     "test:coverage": "CI=true react-scripts test --env=jsdom --coverage --passWithNoTests",
     "lint": "eslint src --ext .tsx --ext .ts --fix",
     "eject": "react-scripts eject",
+
     "sonar": "node sonar-project"
   },
   "eslintConfig": {
