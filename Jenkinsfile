@@ -6,7 +6,8 @@ node {
 
     stage('Sonar') {
       sh 'ls -a'
-      sh 'docker run -i -v $(pwd):/usr/src newtmitch/sonar-scanner -Dsonar.host.url=http://52.82.10.96:9000'
+      sh 'sonar-scanner'
+      docker.run();
     }
     stage('Deploy') {
         docker.build('panda-ui')
