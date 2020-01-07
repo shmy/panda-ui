@@ -21,8 +21,7 @@
     "test": "react-scripts test --passWithNoTests",
     "test:coverage": "CI=true react-scripts test --env=jsdom --coverage --passWithNoTests",
     "lint": "eslint src --ext .tsx --ext .ts --fix",
-    "eject": "react-scripts eject",
-    "sonar": "node sonar-project"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,8 +49,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^3.1.0",
-    "lint-staged": "^9.5.0",
-    "sonarqube-scanner": "^2.5.0"
+    "lint-staged": "^9.5.0"
   },
   "husky": {
     "hooks": {
