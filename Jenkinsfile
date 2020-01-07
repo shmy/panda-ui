@@ -9,10 +9,11 @@ node {
         CI = 'true'
       }
 
-    }
     stage('Sonar') {
-
-      docker.image('shmy/panda-sonar-scanner').inside() {
+      sh 'cd sonar'
+      docker.build('sonar')
+      sh 'cd ../'
+      docker.image('sonar').inside() {
         sh 'sonar-scanner'
       }
     }
