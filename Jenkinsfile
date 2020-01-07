@@ -8,6 +8,7 @@ node {
         CI = 'true'
       }
       docker.image('sonarsource/sonar-scanner-cli').inside('-e SONAR_HOST_URL=http://52.82.10.96:9000 -e SONAR_LOGIN=718e7ca6ed91dfe1b706cce2339ea89fc4ab6f02 -v "$PWD/:/usr/src"') {
+
       }
     }
 
