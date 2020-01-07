@@ -4,8 +4,15 @@ node {
       environment {
         CI = 'true'
       }
-      sh 'node sonar-project'
+      docker.image('node:alpine').inside {
+        sh 'node -v'
+        sh 'npm -v'
+        sh 'npm config set registry https://registry.npm.taobao.org'
+        sh 'npm config get registry'
+        sh 'npm install'
+        sh 'node sonar-project'
 
+      }
     }
 
     stage('Deploy') {
