@@ -10,7 +10,8 @@ node {
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
         sh 'npm install'
-        sh 'node ./sonar-project.js'
+        sh 'ls -a'
+        sh 'npm run sonar'
 
       }
     }
