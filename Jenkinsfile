@@ -1,17 +1,17 @@
 #!groovy
 node {
+    stage ("Checkout") {
+      gitClean()
+      checkout scm
+    }
+
     stage('Build') {
       environment {
         CI = 'true'
       }
-      docker.image('node:alpine').inside {
-        sh 'node -v'
-        sh 'npm -v'
 
-        sh 'npm install'
-        sh 'ls -a'
-        sh 'npm run sonar'
-
+      docker.image('sonarsource/sonar-scanner-cli').inside {
+        sh 'sonar-scanner-cli -v'
       }
     }
 
