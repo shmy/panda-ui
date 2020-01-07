@@ -7,6 +7,7 @@ node {
 
     stage('Sonar') {
       def sonarqubeScannerHome = tool name: 'sonar-scanner'
+
       sh "${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.projectBaseDir=${pwd}"
     }
     stage('Deploy') {
