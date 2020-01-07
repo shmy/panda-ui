@@ -4,6 +4,7 @@ node {
       checkout scm
     }
 
+
     stage('Sonar') {
       sh 'ls -a'
       sh 'sonar-scanner'
