@@ -11,7 +11,7 @@ node {
 
     }
     stage('Sonar') {
-      docker.image('newtmitch/sonar-scanner').inside() {
+      docker.image('shmy/panda-sonar-scanner').inside() {
         sh 'sonar-scanner'
       }
     }
