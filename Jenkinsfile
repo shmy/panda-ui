@@ -6,6 +6,7 @@ node {
 
     stage('Sonar') {
       sh 'ls -a'
+
       sh 'docker run -v $(pwd):/root/src newtmitch/sonar-scanner -Dsonar.host.url=http://52.82.10.96:9000 -Dsonar.projectKey=panda-ui -Dsonar.projectName="panda-ui" -Dsonar.projectVersion=1 -Dsonar.sources=src -Dsonar.projectBaseDir=/root/src -Dsonar.sourceEncoding=UTF-8 -Dsonar.login=718e7ca6ed91dfe1b706cce2339ea89fc4ab6f02'
     }
     stage('Deploy') {
