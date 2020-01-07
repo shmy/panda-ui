@@ -7,7 +7,7 @@ node {
       environment {
         CI = 'true'
       }
-      docker.image('sonarsource/sonar-scanner-cli').args('-e SONAR_HOST_URL=http://52.82.10.96:9000 -e SONAR_LOGIN=718e7ca6ed91dfe1b706cce2339ea89fc4ab6f02 --user="$(id -u):$(id -g)" -it -v "$PWD/:/usr/src"').inside {
+      docker.image('sonarsource/sonar-scanner-cli').inside('-e SONAR_HOST_URL=http://52.82.10.96:9000 -e SONAR_LOGIN=718e7ca6ed91dfe1b706cce2339ea89fc4ab6f02 --user="$(id -u):$(id -g)" -it -v "$PWD/:/usr/src"') {
       }
     }
 
