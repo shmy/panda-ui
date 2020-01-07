@@ -1,9 +1,5 @@
 #!groovy
 node {
-    stage ("Checkout") {
-      gitClean()
-      checkout scm
-    }
 
     stage('Build') {
       environment {
