@@ -11,9 +11,9 @@ node {
 
     }
     stage('Sonar') {
-    docker.image('newtmitch/sonar-scanner').inside() {
+      docker.image('sonarsource/sonar-scanner-cli').inside() {
         sh 'sonar-scanner'
-    }
+      }
     }
 
     stage('Deploy') {
