@@ -4,12 +4,6 @@ node {
       checkout scm
     }
 
-    stage('Build') {
-      environment {
-        CI = 'true'
-      }
-    }
-
     stage('Sonar') {
       sh 'cd sonar'
       docker.build('sonar')
