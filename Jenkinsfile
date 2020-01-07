@@ -7,8 +7,7 @@ node {
       docker.image('node:alpine').inside {
         sh 'node -v'
         sh 'npm -v'
-        sh 'npm config set registry https://registry.npm.taobao.org'
-        sh 'npm config get registry'
+
         sh 'npm install'
         sh 'ls -a'
         sh 'npm run sonar'
