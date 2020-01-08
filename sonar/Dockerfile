@@ -16,6 +16,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 WORKDIR /usr/src
 RUN sudo apt-get install wget -y
+
 RUN wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.0.0.1744-linux.zip -O ./sonarscanner.zip
 RUN unzip sonarscanner.zip && \
 	rm sonarscanner.zip && \

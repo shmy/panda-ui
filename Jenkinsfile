@@ -4,8 +4,15 @@ node {
       checkout scm
     }
 
-    stage('Sonar') {
+    stage('Build') {
       dir('sonar') {
+        sh 'node -v'
+        sh 'npm -v'
+        sh 'npm config set registry https://registry.npm.taobao.org'
+        sh 'npm config get registry'
+        sh 'npm install'
+        sh 'npm run test:coverage'
+        sh 'npm run build'
         sh 'ls -a'
         sh 'docker build -t sonar .'
       }
@@ -15,5 +22,11 @@ node {
       }
     }
 
+    stage('Deploy') {
+        docker.build('panda-ui')
+        docker.withRegistry('https://955095959256.dkr.ecr.cn-northwest-1.amazonaws.com.cn', 'ecr:cn-northwest-1:panda-ecr') {
+          docker.image('panda-ui').push('latest')
+        }
+    }
 
 }
