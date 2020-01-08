@@ -6,17 +6,23 @@ node {
 
     stage('Build') {
       environment {
-        CI = true
+        CI = 'true'
       }
+      docker.image('node:alpine').inside {
+            sh 'node -v'
+            sh 'npm -v'
+            sh 'npm config set registry https://registry.npm.taobao.org'
+            sh 'npm config get registry'
+            sh 'npm install'
+            sh 'npm run test:coverage'
+            sh 'npm run build'
+            }
+        }
       dir('sonar') {
         sh 'docker build -t sonar .'
       }
+      sh 'ls -a'
       docker.image('sonar').inside() {
-        sh 'node -v'
-        sh 'npm -v'
-        sh 'sudo npm install'
-        sh 'npm run test:coverage'
-        sh 'npm run build'
         sh 'sonar-scanner'
       }
     }
