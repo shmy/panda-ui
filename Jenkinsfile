@@ -5,6 +5,10 @@ node {
     }
 
     stage('Build') {
+      environment {
+        HOME = '.'
+        CI = true
+      }
       dir('sonar') {
         sh 'docker build -t sonar .'
       }
