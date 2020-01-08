@@ -20,7 +20,6 @@ node {
       dir('sonar') {
         sh 'docker build -t sonar .'
       }
-      sh 'ls -a'
       docker.image('sonar').inside() {
         sh 'sonar-scanner'
       }
