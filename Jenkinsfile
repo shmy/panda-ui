@@ -6,7 +6,6 @@ node {
 
     stage('Build') {
       environment {
-        HOME = '.'
         CI = true
       }
       dir('sonar') {
@@ -15,7 +14,7 @@ node {
       docker.image('sonar').inside() {
         sh 'node -v'
         sh 'npm -v'
-        sh 'npm install'
+        sh 'sudo npm install'
         sh 'npm run test:coverage'
         sh 'npm run build'
         sh 'sonar-scanner'
