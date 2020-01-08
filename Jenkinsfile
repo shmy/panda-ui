@@ -6,6 +6,10 @@ node {
 
     stage('Build') {
       dir('sonar') {
+        sh 'docker build -t sonar .'
+      }
+      sh 'ls -a'
+      docker.image('sonar').inside() {
         sh 'node -v'
         sh 'npm -v'
         sh 'npm config set registry https://registry.npm.taobao.org'
@@ -14,10 +18,6 @@ node {
         sh 'npm run test:coverage'
         sh 'npm run build'
         sh 'ls -a'
-        sh 'docker build -t sonar .'
-      }
-      sh 'ls -a'
-      docker.image('sonar').inside() {
         sh 'sonar-scanner'
       }
     }
