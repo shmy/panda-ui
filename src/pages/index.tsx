@@ -10,6 +10,11 @@ type State = Readonly<{
   resp: string;
   status: LOAD_STATUS;
 }>;
+const fetchWithTimeout = (inp: any, opt = {}, timeout = 10000) => Promise.race([
+  fetch(inp, opt),
+  new Promise(function (resolve, reject) {
+    setTimeout(() => reject(new Error('request timeout')), timeout)
+  })])
 
 class index extends PureComponent<Props, State> {
   readonly state: State = {
@@ -24,7 +29,7 @@ class index extends PureComponent<Props, State> {
   handleFetch = async () => {
     try {
       this.setState({status: LOAD_STATUS.loading})
-      const resp = await window.fetch(baseUrl + '/').then(r => r.text())
+      const resp = await fetchWithTimeout(baseUrl + '/').then((r: any) => r.text())
       this.setState({resp, status: LOAD_STATUS.loaded})
 
     } catch (e) {
