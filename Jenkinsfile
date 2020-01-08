@@ -12,7 +12,7 @@ node {
       docker.image('sonar').inside() {
         sh 'node -v'
         sh 'npm -v'
-        sh 'sudo chown -R 1000:1000 "/.npm"'
+        sh 'sudo chown -R 1000:1000 /.npm'
         sh 'npm config set registry https://registry.npm.taobao.org'
         sh 'npm config get registry'
         sh 'npm install'
