@@ -17,7 +17,6 @@ node {
             sh 'npm run test:coverage'
             sh 'npm run build'
             }
-        }
       dir('sonar') {
         sh 'docker build -t sonar .'
       }
