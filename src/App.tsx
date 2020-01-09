@@ -8,6 +8,7 @@ const App: React.FC = () => {
   return (
     <>
       <h3 style={{ textAlign: 'center', color: 'red' }}>You are now {process.env.NODE_ENV}!</h3>
+      <p>ShowCase</p>
       <Index />
     </>
   )
