@@ -26,11 +26,16 @@ node {
     }
 
     stage('Deploy') {
-      docker.build('panda-ui')
-      docker.withRegistry('https://955095959256.dkr.ecr.cn-northwest-1.amazonaws.com.cn', 'ecr:cn-northwest-1:panda-ecr') {
-        docker.image('panda-ui').push('latest')
+      sh 'mkdir tmp'
+      sh 'cp -r build tmp'
+      sh 'cp Dockerfile tmp'
+      dir('tmp') {
+        docker.build('panda-ui')
+        docker.withRegistry('https://955095959256.dkr.ecr.cn-northwest-1.amazonaws.com.cn', 'ecr:cn-northwest-1:panda-ecr') {
+          docker.image('panda-ui').push('latest')
+        }
       }
-
+      sh 'rm -rf tmp'
       dir('config/k8s') {
         def exists = fileExists './kubectl'
         if (!exists) {
