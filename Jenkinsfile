@@ -44,10 +44,10 @@ node {
           sh 'chmod +x ./kubectl'
         }
 
-        sh './kubectl --kubeconfig=k8s-config delete deployment/panda-ui-deployment --ignore-not-found=true'
-        sh './kubectl --kubeconfig=k8s-config delete service/panda-ui-service --ignore-not-found=true'
+        sh './kubectl delete deployment/panda-ui-deployment --ignore-not-found=true'
+        sh './kubectl delete service/panda-ui-service --ignore-not-found=true'
         sh 'sleep 90'
-        sh './kubectl --kubeconfig=k8s-config create -f panda-ui.yaml'
+        sh './kubectl create -f panda-ui.yaml'
       }
     }
 
