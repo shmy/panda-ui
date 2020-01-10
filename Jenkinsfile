@@ -43,11 +43,7 @@ node {
           sh 'curl -LO https://s3.cn-north-1.amazonaws.com.cn/kops-bjs/fileRepository/kubernetes-release/release/v1.15.5/bin/linux/amd64/kubectl'
           sh 'chmod +x ./kubectl'
         }
-
-        sh './kubectl delete deployment/panda-ui-deployment --ignore-not-found=true'
-        sh './kubectl delete service/panda-ui-service --ignore-not-found=true'
-        sh 'sleep 90'
-        sh './kubectl create -f panda-ui.yaml'
+        sh './kubectl apply -f panda-ui.yaml'
       }
     }
 
