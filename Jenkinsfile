@@ -28,6 +28,7 @@ node {
     stage('Deploy') {
       sh 'mkdir tmp'
       sh 'cp -r build tmp'
+      sh 'cp -r deploy tmp'
       sh 'cp Dockerfile tmp'
       dir('tmp') {
         docker.build('panda-ui')
