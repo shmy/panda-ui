@@ -1,4 +1,4 @@
-#!groovy
+#!/usr/bin/env groovy
 node {
     stage('Build') {
       environment {
@@ -43,6 +43,12 @@ node {
           sh 'curl -LO https://s3.cn-north-1.amazonaws.com.cn/kops-bjs/fileRepository/kubernetes-release/release/v1.15.5/bin/linux/amd64/kubectl'
           sh 'chmod +x ./kubectl'
         }
+
+        sh 'chmod +x ./eval-replace.sh'
+        sh 'export BUILD_NUM=${BUILD_NUMBER} && ./eval-replace.sh'
+
+        sh 'cat panda-be.yaml'
+
         sh './kubectl apply -f panda-ui.yaml'
       }
     }
