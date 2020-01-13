@@ -47,7 +47,7 @@ node {
         sh 'chmod +x ./eval-replace.sh'
         sh 'export BUILD_NUM=${BUILD_NUMBER} && ./eval-replace.sh'
 
-        sh 'cat panda-be.yaml'
+        sh 'cat panda-ui.yaml'
 
         sh './kubectl apply -f panda-ui.yaml'
       }
