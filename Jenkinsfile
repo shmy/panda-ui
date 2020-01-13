@@ -33,7 +33,7 @@ node {
       dir('tmp') {
         docker.build('panda-ui')
         docker.withRegistry('https://955095959256.dkr.ecr.cn-northwest-1.amazonaws.com.cn', 'ecr:cn-northwest-1:panda-ecr') {
-          docker.image('panda-ui').push('latest')
+          docker.image('panda-ui').push("${BNUILD_NUMBER}")
         }
       }
       sh 'rm -rf tmp'
@@ -44,12 +44,7 @@ node {
           sh 'chmod +x ./kubectl'
         }
 
-        sh 'chmod +x ./eval-replace.sh'
-        sh 'export BUILD_NUM=${BUILD_NUMBER} && ./eval-replace.sh'
-
-        sh 'cat panda-ui.yaml'
-
-        sh './kubectl apply -f panda-ui.yaml'
+        sh 'sed -e "s#{BUILD_NUM}#${BUILD_NUMBER}#g" panda-ui.yaml |./kubectl apply -f -'
       }
     }
 
