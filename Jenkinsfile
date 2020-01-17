@@ -26,7 +26,7 @@ node {
     }
 
     stage('Deploy') {
-      sh 'mkdir tmp'
+      sh 'mkdir -p tmp'
       sh 'cp -r build tmp'
       sh 'cp -r deploy tmp'
       sh 'cp Dockerfile tmp'
